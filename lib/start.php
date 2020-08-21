@@ -72,7 +72,7 @@ include_once SMARTY_ADD."Smarty.class.php";
 
 function auto($classname){
     include_once MAIN_PATH.str_replace("\\",DIRECTORY_SEPARATOR,$classname).".class.php";
-    echo MAIN_PATH.str_replace("\\",DIRECTORY_SEPARATOR,"smarty");
+   
 }
 
 
