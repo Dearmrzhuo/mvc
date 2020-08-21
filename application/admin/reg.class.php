@@ -37,6 +37,7 @@ class reg
             $db->query("insert into user (uname,pass) VALUES ('$uname','$passre')");
             echo "insert into user (uname,pass) VALUES ('$uname','$passre')";
             echo "注册成功!";
+            $db->close();
         }
     }
     function checkName(){

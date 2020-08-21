@@ -4,6 +4,7 @@ if (!defined("MVC")) {
 }
 use lib\smarty;
 use lib\database;
+use lib\code;
 class index
 {
     function int()
@@ -35,9 +36,15 @@ class index
            echo "没有相应的数据,请重新登录";
        }else{
            header("location:".ENTRY_ADD."/admin/index/first");
+           $db->close();
        }
     }
     function first(){
         echo "后台首页";
+    }
+    function mcode(){
+        ob_clean();
+        $code = new code();
+        $code->out();
     }
 }

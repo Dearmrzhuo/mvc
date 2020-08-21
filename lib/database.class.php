@@ -17,4 +17,7 @@ class database{
         $db->query("set names utf8");
         $this->db = $db;
     }
+    function close (){
+        $this->db->close();
+    }
 }

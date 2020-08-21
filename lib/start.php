@@ -26,6 +26,12 @@ define("TPL_PATH",APP_NAME."template".DIRECTORY_SEPARATOR);
 //编译文件所在的目录
 define("COMPILE_PATH",APP_NAME."compile".DIRECTORY_SEPARATOR);
 
+//静态文件绝对路径
+define("STATIC_PATH",APP_NAME."static".DIRECTORY_SEPARATOR);
+
+//font
+define("FONT_PATH",STATIC_PATH."font".DIRECTORY_SEPARATOR);
+
 //以下定义http协议访问的路径
 define("HOST_ADD","http://".$_SERVER["HTTP_HOST"]);
 
@@ -49,14 +55,12 @@ define("CSS_ADD",STATIC_ADD."css".'/');
 
 //js
 define("JS_ADD",STATIC_ADD."js".'/');
+
 //img
 define("IMG_ADD",STATIC_ADD."img".'/');
-//font
-define("FONT_ADD",STATIC_ADD."font".'/');
 
 //var_dump(CSS_ADD);
 //var_dump($_SERVER);
-// echo FONT_ADD;
 
 //路由的概念
 // index.php?name=XXX&age=XXX
@@ -72,10 +76,11 @@ include_once SMARTY_ADD."Smarty.class.php";
 
 function auto($classname){
     include_once MAIN_PATH.str_replace("\\",DIRECTORY_SEPARATOR,$classname).".class.php";
-   
+
 }
-
-
+//echo '{FONT_PATH}'.'code.ttf';
+//echo '<br>';
+//echo 'D:\server\server\laomeng\8.20mvcback\mvc\application\static\font\code.ttf';
 // 类自动载入
 spl_autoload_register("auto");
 
