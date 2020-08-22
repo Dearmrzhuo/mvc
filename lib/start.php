@@ -86,3 +86,4 @@ spl_autoload_register("auto");
 
 $route =  new \lib\route();
 $route->run();
+//echo CSS_ADD;

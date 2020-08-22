@@ -1,5 +1,6 @@
 <?php
 //用来记录一个口令
+session_start();
 header("content-type:text/html;charset=utf8;");
 define("MVC",true);
 //魔术常量

@@ -40,11 +40,13 @@ return $str;
 
 private function setText(){
 $str = $this->getText();
+$this->str = strtolower($str);
 for ($i = 0; $i < $this->codeLen; $i++) {
 $size = mt_rand($this->fontSize["min"], $this->fontSize["max"]);
 $angle = mt_rand($this->fontAngle["min"], $this->fontAngle["max"]);
-$space = $this->width / ($this->codeLen * 2 - 2);
-imagettftext($this->image, $size, $angle, mt_rand($space * $i * 1, $space * $i * 1.5), mt_rand(30, 48), $this->setColor("a"), "C:\Users\ABC\Desktop\demo.TTF", $str[$i]);
+$space = $this->width / ($this->codeLen * 3 );
+imagettftext($this->image, $size, $angle, mt_rand(max($space * $i * 3 - 1 ,0), $space * $i * 3 + 1), mt_rand($this->fontSize["max"]-5, ($this->height)-($this->fontSize["min"])/4), $this->setColor("a"), "C:\Users\ABC\Desktop\demo.TTF", $str[$i]);
+
 }
 }
 
@@ -75,8 +77,9 @@ $this->createCanvas();
 $this->setLine();
 //3.文字
 $this->setText();
-//
+//4.画像素
 $this->setDot();
+$_SESSION["code"]=$this->str;
 $outtake = "image" . $this->type;
 $outtake($this->image);
 imagedestroy($this->image);
