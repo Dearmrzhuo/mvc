@@ -2,10 +2,12 @@
 if (!defined("MVC")) {
     die("非法入侵");
 }
+
 use lib\smarty;
 use lib\database;
 use lib\code;
 use lib\cookie;
+
 class index
 {
     function int()
@@ -18,15 +20,15 @@ class index
     }
     function login()
     {
-        $uname = addslashes($_POST["uname"]);//对SQL语句进行转义
+        $uname = addslashes($_POST["uname"]); //对SQL语句进行转义
         $pass = md5(md5($_POST["pass"]));
 
         //if(!(isset($_COOKIE["code"])&&$_COOKIE["code"]==$_POST["code"])){
-        if($_POST["code"]!==$_SESSION["code"])
-        {echo "验证码有误";
+        if ($_POST["code"] !== $_SESSION["code"]) {
+            echo "验证码有误";
             return;
         }
-        if(strlen($uname)<5||empty($pass)){
+        if (strlen($uname) < 5 || empty($pass)) {
             echo "用户名和密码不符合规范!";
             return;
         }
@@ -34,43 +36,49 @@ class index
         //用户表存储用户的主要信息 //如果需要更多的信息 则创建一个新的副表
         //$db = new mysqli("localhost","root","","exp","3308");
         //if (mysqli_connect_error()) {
-            //die("连接数据库错误！");
+        //die("连接数据库错误！");
         //}
         //$db->query("set names utf8");
-        $database = new database() ;
+        $database = new database();
         $db = $database->db;
         $result = $db->query("select * from user where uname='$uname' and pass='$pass'");
-       if($result->num_rows<1){
-           echo "没有相应的数据,请重新登录";
-       }else{
-           $cookie = new cookie();
-          $_SESSION["login"]="yes";
-           header("location:".ENTRY_ADD."/admin/index/first");
-
-       }
+        if ($result->num_rows < 1) {
+            echo "没有相应的数据,请重新登录";
+        } else {
+            $cookie = new cookie();
+            $_SESSION["login"] = "yes";
+            $_SESSION["uname"] =  $uname;
+            header("location:" . ENTRY_ADD . "/admin/index/first");
+        }
         $db->close();
     }
-    function first(){
+    function exitLogin(){
+        session_destroy();
+        header("location:" . ENTRY_ADD . "/admin");
+    }
+    function first()
+    {
         // $cookie = new cookie();
         //if($cookie->isCookie("login")&&$cookie->getCookie("login")=="yes"){
-        if(isset($_SESSION["login"])&&$_SESSION["login"]=="yes")
-        {
-            echo "后台首页";
-        }
-        else{
-            header("location:".ENTRY_ADD."/admin");
+        if (isset($_SESSION["login"]) && $_SESSION["login"] == "yes") {
+            $smarty = new smarty();
+            $smarty->assign("uname",$_SESSION["uname"]);
+            $smarty->display("admin/index.html");
+        } else {
+            header("location:" . ENTRY_ADD . "/admin");
         }
     }
-    function mcode(){
-        ob_clean();//清除缓存 图片生成缓存过多
+    function mcode()
+    {
+        ob_clean(); //清除缓存 图片生成缓存过多
         $code = new code();
-        $code->lineWith=array("min"=>5,"max"=>10);
-        $code->codeLen=5;
-        $code->lineWith=array("min"=>1,"max"=>4);
-        $code->fontSize=array("min"=>20,"max"=>35);
-        $code->height=50;
+        $code->lineWith = array("min" => 5, "max" => 10);
+        $code->codeLen = 5;
+        $code->lineWith = array("min" => 1, "max" => 4);
+        $code->fontSize = array("min" => 20, "max" => 35);
+        $code->height = 50;
         $code->out();
-        $this->code=$code->str;
+        $this->code = $code->str;
         //会话机制
         //客户端请求验证码地址，服务器运行php运行生成验证码
         //返回验证码和验证验证码，不是同步的
@@ -82,5 +90,11 @@ class index
         //用户同意写入，但是只能写入指定的地方。同时一个主机只能向客户端吸入不能超过4k的内容
 
 
+    }
+    function addUser(){
+        echo "添加用户";
+    }
+    function editUser(){
+        echo "修改用户信息";
     }
 }
