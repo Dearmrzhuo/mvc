@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{CSS_ADD}bootstrap.css">
+    <link rel="stylesheet" href="{CSS_ADD}admin/addCategory.css">
+</head>
+
+<body>
+    <div class="table-con">
+        <h1 class="table-title">栏目信息</h1>
+        <form action="{ENTRY_ADD}/admin/category/addCategory" style="margin-bottom: 10px; margin-top: 20px;"
+            method="post">
+            <div class="form-group">
+                <label for="cname">一级栏目名称</label>
+                <input type="text" class="form-control" placeholder="添加一级栏目" name="cname">
+            </div>
+            <div class="form-group">
+                <label for="isshow">导航可见</label>
+                <select name="isshow" id="isshow" class="form-control">
+                    <option value="1">在导航可见</option>
+                    <option value="0">在导航不可见</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cname">对应模板</label>
+                <input type="text" class="form-control" placeholder="添加一级栏目" name="tpl_name">
+            </div>
+            <div class="form-group">
+                <label for="info">栏目描述</label>
+                <textarea name="info" id="info" class="form-control" rows="4"></textarea>
+            </div>
+            <input type="submit" class="btn btn-block" value="添加">
+        </form>
+    </div>
+
+</body>
+
+</html>

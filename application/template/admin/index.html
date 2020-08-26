@@ -14,7 +14,7 @@
     <h1 class="h-title">欢迎来到管理系统</h1>
     <div class="h-loginMess">
         <span>用户:{$uname},</span>
-        <a href="{ENTRY_ADD}/admin/index/exitLogin" style="color: red; cursor: pointer;">退出登录</a>
+        <a href="{ENTRY_ADD}/admin/index/exitLogin" style="color: gold; cursor: pointer;">退出登录</a>
     </div>
 </header>
 <div class="decoration">
@@ -42,6 +42,9 @@
 </div>
 <main class="main-con">
     <iframe src="" frameborder="0" name="main"></iframe>
+    <div class="bottom">
+        <div class="bto-title">XXX版权信息&nbsp&nbsp&nbsp&nbspXX制作&nbsp&nbsp&nbsp&nbsp联系电话：XXX-XX-XXXXXXX</div>
+    </div>
 </main>
 <div class="side s-user">
     <div class="s-title ">
@@ -76,23 +79,16 @@
         栏目管理
     </div>
     <div class="s-title1">
-        添加日志
+        <a href="{ENTRY_ADD}/admin/category" target="main">查看栏目</a>
+    </div>
+    <div class="s-title1">
+        <a href="{ENTRY_ADD}/admin/category/addpage" target="main">添加栏目</a>
+    </div>
+    <div class="s-title1">
+        <a href="{ENTRY_ADD}/admin/category/editCategory" target="main">修改栏目</a>
     </div>
 </div>
-<div class="side s-content">
-    <div class="s-title ">
-        内容管理
-    </div>
-    <div class="s-title1">
-        添加日志
-    </div>
-    <div class="s-title1">
-        删除日志
-    </div>
-    <div class="s-title1">
-        修改日志信息
-    </div>
-</div>
+
 <div class="side s-project">
     <div class="s-title ">
         项目管理
@@ -112,7 +108,10 @@
         内容管理
     </div>
     <div class="s-title1">
-        添加内容
+        <a href="{ENTRY_ADD}/admin/content/add" target="main">添加内容</a>
+    </div>
+    <div class="s-title1">
+        <a href="{ENTRY_ADD}/admin/content/showList" target="main">查看信息列表</a>
     </div>
 </div>
 

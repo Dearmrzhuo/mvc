@@ -17,16 +17,7 @@ $(function () {
             });
             userFlag = 0;
         }
-        // $("html").click(function () {
-        //     $(".side").animate({
-        //         left: "-250px"
-        //     })
-        //     userFlag = 0;
-        //     logFlag = 0;
-        //     lanmuFlag = 0;
-        //     projectFlag = 0;
-        //     contentFlag = 0;
-        // })
+
     })
     $(".n-log").click(function () {
         //console.log(1);
@@ -85,5 +76,10 @@ $(function () {
         }
     })
 
+    $(".s-title1").click(function () {
+        $(".s-title1").parent([0]).animate({
+            left: "-250px"
+        });
+    })
 
 })

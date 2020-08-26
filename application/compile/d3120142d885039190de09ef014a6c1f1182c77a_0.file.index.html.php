@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-23 16:48:28
+/* Smarty version 3.1.34-dev-7, created on 2020-08-26 07:30:29
   from 'D:\server\server\laomeng\8.20mvcback\mvc\application\template\admin\index.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f429ddc0fcce3_20021956',
+  'unifunc' => 'content_5f460f95532a28_44751840',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd3120142d885039190de09ef014a6c1f1182c77a' => 
     array (
       0 => 'D:\\server\\server\\laomeng\\8.20mvcback\\mvc\\application\\template\\admin\\index.html',
-      1 => 1598201306,
+      1 => 1598427027,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f429ddc0fcce3_20021956 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f460f95532a28_44751840 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +46,7 @@ admin/index.js"><?php echo '</script'; ?>
         <span>用户:<?php echo $_smarty_tpl->tpl_vars['uname']->value;?>
 ,</span>
         <a href="<?php echo ENTRY_ADD;?>
-/admin/index/exitLogin" style="color: red; cursor: pointer;">退出登录</a>
+/admin/index/exitLogin" style="color: gold; cursor: pointer;">退出登录</a>
     </div>
 </header>
 <div class="decoration">
@@ -74,6 +74,9 @@ admin/index.js"><?php echo '</script'; ?>
 </div>
 <main class="main-con">
     <iframe src="" frameborder="0" name="main"></iframe>
+    <div class="bottom">
+        <div class="bto-title">XXX版权信息&nbsp&nbsp&nbsp&nbspXX制作&nbsp&nbsp&nbsp&nbsp联系电话：XXX-XX-XXXXXXX</div>
+    </div>
 </main>
 <div class="side s-user">
     <div class="s-title ">
@@ -110,23 +113,19 @@ admin/index.js"><?php echo '</script'; ?>
         栏目管理
     </div>
     <div class="s-title1">
-        添加日志
+        <a href="<?php echo ENTRY_ADD;?>
+/admin/category" target="main">查看栏目</a>
+    </div>
+    <div class="s-title1">
+        <a href="<?php echo ENTRY_ADD;?>
+/admin/category/addpage" target="main">添加栏目</a>
+    </div>
+    <div class="s-title1">
+        <a href="<?php echo ENTRY_ADD;?>
+/admin/category/editCategory" target="main">修改栏目</a>
     </div>
 </div>
-<div class="side s-content">
-    <div class="s-title ">
-        内容管理
-    </div>
-    <div class="s-title1">
-        添加日志
-    </div>
-    <div class="s-title1">
-        删除日志
-    </div>
-    <div class="s-title1">
-        修改日志信息
-    </div>
-</div>
+
 <div class="side s-project">
     <div class="s-title ">
         项目管理
@@ -146,7 +145,12 @@ admin/index.js"><?php echo '</script'; ?>
         内容管理
     </div>
     <div class="s-title1">
-        添加内容
+        <a href="<?php echo ENTRY_ADD;?>
+/admin/content/add" target="main">添加内容</a>
+    </div>
+    <div class="s-title1">
+        <a href="<?php echo ENTRY_ADD;?>
+/admin/content/showList" target="main">查看信息列表</a>
     </div>
 </div>
 

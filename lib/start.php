@@ -52,7 +52,8 @@ define("SMARTY_ADD", LIBS_PATH . "smarty" . DIRECTORY_SEPARATOR);
 define("STATIC_ADD", APP_ADD . "static" . '/');
 //css的地址
 define("CSS_ADD", STATIC_ADD . "css" . '/');
-
+//bootstrap
+define("BOOT_ADD", CSS_ADD ."bootstrap.css");
 //js
 define("JS_ADD", STATIC_ADD . "js" . '/');
 

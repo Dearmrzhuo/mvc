@@ -1,0 +1,63 @@
+body {
+    background-color: #e7e7e7;
+}
+
+.c-look {
+    color: #003366;
+    transition: color 0.3s ease;
+}
+
+.c-look:hover {
+    color: rgb(55, 201, 19);
+    text-decoration: none;
+}
+
+.c-del {
+    color: #003366;
+    transition: color 0.3s ease;
+}
+
+.c-del:hover {
+    color: rgb(255, 0, 0);
+    text-decoration: none;
+}
+
+.c-edit {
+    color: #003366;
+    transition: color 0.3s ease;
+}
+
+.c-edit:hover {
+    color: gold;
+    text-decoration: none;
+}
+
+.table-con {
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.table-con1 {
+    border: 2px solid #003366;
+    background-color: #c7e0f8;
+}
+
+.table-bordered>tbody>tr>td {
+    border: 1px solid #003366;
+}
+
+.table-bordered>tbody>tr>th {
+    border: 1px solid #003366;
+}
+
+.table-con {
+    text-align: center;
+    color: #000000;
+}
+
+.table-title {
+    color: #003366;
+    transition: color 1s ease-in;
+}

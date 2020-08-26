@@ -14,7 +14,8 @@
 
 .header-con h1 {
     color: white;
-    color: white;
+    font-size: 40px;
+    font-family: cursive;
     letter-spacing: 8px;
     position: absolute;
     top: 50%;
@@ -70,8 +71,29 @@
 
 .main-con {
     width: 100%;
-    height: 724px;
-    background-color: white;
+    height: auto;
+    background-color: #E7E7E7;
+    min-height: 723px;
+}
+
+iframe {
+    width: 100%;
+    height: 650px;
+
+}
+
+.bottom {
+    width: 100%;
+    height: 69px;
+    background-color: #003366;
+    text-align: center;
+}
+
+.bto-title {
+    font-size: 16px;
+    line-height: 69px;
+    color: #ffffff;
+    font-family: Georgia;
 }
 
 .side {

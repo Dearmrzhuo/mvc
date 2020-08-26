@@ -24,10 +24,11 @@ class index
         $pass = md5(md5($_POST["pass"]));
 
         //if(!(isset($_COOKIE["code"])&&$_COOKIE["code"]==$_POST["code"])){
+        if($this->isCheck==true){
         if ($_POST["code"] !== $_SESSION["code"]) {
             echo "验证码有误";
             return;
-        }
+        }}
         if (strlen($uname) < 5 || empty($pass)) {
             echo "用户名和密码不符合规范!";
             return;
@@ -52,7 +53,8 @@ class index
         }
         $db->close();
     }
-    function exitLogin(){
+    function exitLogin()
+    {
         session_destroy();
         header("location:" . ENTRY_ADD . "/admin");
     }
@@ -62,7 +64,7 @@ class index
         //if($cookie->isCookie("login")&&$cookie->getCookie("login")=="yes"){
         if (isset($_SESSION["login"]) && $_SESSION["login"] == "yes") {
             $smarty = new smarty();
-            $smarty->assign("uname",$_SESSION["uname"]);
+            $smarty->assign("uname", $_SESSION["uname"]);
             $smarty->display("admin/index.html");
         } else {
             header("location:" . ENTRY_ADD . "/admin");
@@ -72,13 +74,9 @@ class index
     {
         ob_clean(); //清除缓存 图片生成缓存过多
         $code = new code();
-        $code->lineWith = array("min" => 5, "max" => 10);
-        $code->codeLen = 5;
-        $code->lineWith = array("min" => 1, "max" => 4);
-        $code->fontSize = array("min" => 20, "max" => 35);
-        $code->height = 50;
         $code->out();
         $this->code = $code->str;
+        $this->isCheck=$code->isCheck;
         //会话机制
         //客户端请求验证码地址，服务器运行php运行生成验证码
         //返回验证码和验证验证码，不是同步的
@@ -88,13 +86,13 @@ class index
         //cookie技术 在客户端访问完服务器 服务器会给客户端返回一条cookie(产生了分歧，发送请求A，但是服务器还会返回一条信息B，容易遭到泄露 )
         //我们可以给用户提供自主选择的权利，可以接受cookie，也可以不接受
         //用户同意写入，但是只能写入指定的地方。同时一个主机只能向客户端吸入不能超过4k的内容
-
-
     }
-    function addUser(){
+    function addUser()
+    {
         echo "添加用户";
     }
-    function editUser(){
+    function editUser()
+    {
         echo "修改用户信息";
     }
 }
