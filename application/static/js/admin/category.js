@@ -1,4 +1,5 @@
 $(".o-add").click(function () {
+    $(window.parent.document).find("#main").css("min-height","800px");
     $(".pannel-con").css("border", "5px solid rgba(53, 52, 52, 0.7) ")
     var cid = $(this).attr("attr");
     //console.log(cid);
@@ -15,6 +16,7 @@ $(".addclose").click(function () {
     setTimeout(function () {
         $(".addpannel").css("display", "none");
     }, 800)
+    $(window.parent.document).find("#main").css("min-height","650px");
 })
 
 function randomColor(num) {
@@ -25,6 +27,7 @@ function randomColor(num) {
 randomColor(1000);
 //修改
 $(".o-edit").click(function () {
+    $(window.parent.document).find("#main").css("min-height","800px");
     $(".pannel-con").css("border", "5px solid rgba(53, 52, 52, 0.7) ")
     var cid = $(this).attr("attr");
     var pid = $(this).attr("pid");
@@ -67,12 +70,13 @@ $(".o-edit").click(function () {
     // console.log(EIDTLOG);
     $(".o-edit-btn").click(function () {
         //1.名字 //2.cid ->pid
-        var data = ($(".editpannel form").serialize());
+        var data = ($(".editpannel form").serialize());//采集表单内容序列化
         console.log(data);
         $.ajax({
             url: EIDTLOG,
             data: data,
             success: function (e) {
+                $(window.parent.document).find("#main").css("min-height","650px");
                 if ($.trim(e) == "ok") { //去掉空格
                     location.reload();
                 }
@@ -117,6 +121,7 @@ $(".editclose").click(function () {
     setTimeout(function () {
         $(".editpannel").css("display", "none");
     }, 800)
+    $(window.parent.document).find("#main").css("min-height","650px");
 })
 $(".pannel-con").click(function () {
     $(this).css("border", "5px solid rgba(255, 215, 0,0.7) ")

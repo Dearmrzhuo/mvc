@@ -7,11 +7,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="{CSS_ADD}bootstrap.css">
     <link rel="stylesheet" href="{CSS_ADD}admin/addCategory.css">
+
 </head>
 
 <body>
     <div class="table-con">
-        <h1 class="table-title">栏目信息</h1>
+        <h1 class="table-title">添加栏目</h1>
         <form action="{ENTRY_ADD}/admin/category/addCategory" style="margin-bottom: 10px; margin-top: 20px;"
             method="post">
             <div class="form-group">
@@ -27,14 +28,25 @@
             </div>
             <div class="form-group">
                 <label for="cname">对应模板</label>
-                <input type="text" class="form-control" placeholder="添加一级栏目" name="tpl_name">
+                <input type="text" class="form-control" placeholder="添加对应模板文件名" name="tpl_name">
             </div>
             <div class="form-group">
                 <label for="info">栏目描述</label>
                 <textarea name="info" id="info" class="form-control" rows="4"></textarea>
             </div>
+            <iframe src="{ENTRY_ADD}/admin/category/upload" frameborder="0" id="iframe" style="min-width: 500px;">
+                {ENTRY_ADD}/admin/category/upload
+            </iframe>
+            <input type="hidden"  class="imgurl" name="imgurl">
             <input type="submit" class="btn btn-block" value="添加">
         </form>
+        <script src="{JS_ADD}jquerymini.js"></script>
+        <script>
+            $("form").submit(function () {
+                $(".imgurl").attr("value",$("#iframe").contents().find("#img").attr("src"));
+                console.log($(".imgurl").attr("value"));
+            })
+        </script>
     </div>
 
 </body>

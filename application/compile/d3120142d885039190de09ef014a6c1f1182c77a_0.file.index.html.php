@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-26 07:30:29
+/* Smarty version 3.1.34-dev-7, created on 2020-08-28 05:49:15
   from 'D:\server\server\laomeng\8.20mvcback\mvc\application\template\admin\index.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f460f95532a28_44751840',
+  'unifunc' => 'content_5f489adbd07be3_21160116',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd3120142d885039190de09ef014a6c1f1182c77a' => 
     array (
       0 => 'D:\\server\\server\\laomeng\\8.20mvcback\\mvc\\application\\template\\admin\\index.html',
-      1 => 1598427027,
+      1 => 1598593753,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f460f95532a28_44751840 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f489adbd07be3_21160116 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -72,8 +72,8 @@ admin/index.js"><?php echo '</script'; ?>
 </div>
 <div class="decoration">
 </div>
-<main class="main-con">
-    <iframe src="" frameborder="0" name="main"></iframe>
+<main class="main-con" style="z-index: 999">
+    <iframe src="" frameborder="0" name="main" id="main"></iframe>
     <div class="bottom">
         <div class="bto-title">XXX版权信息&nbsp&nbsp&nbsp&nbspXX制作&nbsp&nbsp&nbsp&nbsp联系电话：XXX-XX-XXXXXXX</div>
     </div>

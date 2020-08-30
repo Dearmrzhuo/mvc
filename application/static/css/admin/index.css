@@ -78,9 +78,11 @@
 
 iframe {
     width: 100%;
-    height: 650px;
+    min-height: 650px;
+    height: auto;
 
 }
+
 
 .bottom {
     width: 100%;

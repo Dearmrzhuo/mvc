@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-08-26 08:34:20
+/* Smarty version 3.1.34-dev-7, created on 2020-08-28 06:33:59
   from 'D:\server\server\laomeng\8.20mvcback\mvc\application\template\admin\category.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f461e8c9ec204_65089124',
+  'unifunc' => 'content_5f48a55778bfa4_45174195',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a93b5e3cd3d46b0a0a2dda2998b451415ffa787d' => 
     array (
       0 => 'D:\\server\\server\\laomeng\\8.20mvcback\\mvc\\application\\template\\admin\\category.html',
-      1 => 1598430845,
+      1 => 1598596436,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f461e8c9ec204_65089124 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f48a55778bfa4_45174195 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="objid">
 
 <head>
     <meta charset="UTF-8">
@@ -34,7 +34,7 @@ bootstrap.css">
 admin/category.css">
 </head>
 
-<body>
+<body >
 
     <div class="table-con">
         <h1 class="table-title">栏目信息</h1>
@@ -58,7 +58,7 @@ admin/category.css">
         <?php }?>
     </div>
     <div class="pannel addpannel">
-        <div class="pannel-con addpannel-con" style="">
+        <div class="pannel-con addpannel-con" style="" style="height:auto;">
             <div class="close addclose"></div>
             <form class="from1" action="<?php echo ENTRY_ADD;?>
 /admin/category/addCategory" method="POST"
@@ -83,12 +83,14 @@ admin/category.css">
                     <label for="info">栏目描述</label>
                     <textarea name="info" id="info" class="form-control" rows="4"></textarea>
                 </div>
+                <input type="hidden" value="" class="imgurl" name="imgurl" id ="imgurladd">
+                <div class="addupload" style="line-height: 50px"></div>
                 <input type="submit" class="btn btn-block" value="提交">
             </form>
         </div>
     </div>
     <div class="pannel editpannel">
-        <div class="pannel-con editpannel-con" style="height: 490px;">
+        <div class="pannel-con editpannel-con" style="height:auto;">
             <div class="close editclose"></div>
             <form class="from1" action="<?php echo ENTRY_ADD;?>
 /admin/category/editCategory" method="POST"
@@ -118,6 +120,8 @@ admin/category.css">
                     <textarea name="infoEdit" id="info" class="form-control infoEdit" rows="4"></textarea>
                 </div>
                 <input type="hidden" value="" class="cidEdit" name="cidEdit">
+                <input type="hidden" value="" class="imgurl" name="imgurlEdit" id ="imgurlEdit">
+                <div class="editupload"></div>
                 <input type="button" class="o-edit-btn" value="修改">
             </form>
         </div>
@@ -133,6 +137,33 @@ jquerymini.js"><?php echo '</script'; ?>
     <?php echo '<script'; ?>
  src="<?php echo JS_ADD;?>
 admin/category.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="<?php echo JS_ADD;?>
+upload.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+>
+        var upObj = new upload();
+        upObj.createView(
+            {
+                parent:document.querySelector(".editupload")
+            }
+        )
+        upObj.up("<?php echo ENTRY_ADD;?>
+/admin/category/uploadimg",function (e) {
+            $("#imgurlEdit").attr("value",e);
+            console.log(e);
+        });
+        var addobj = new upload();
+        addobj.createView({
+            parent:document.querySelector(".addupload")
+        })
+        addobj.up("<?php echo ENTRY_ADD;?>
+/admin/category/uploadimg",function (e) {
+            $("#imgurl").attr("value",e);
+        })
+    <?php echo '</script'; ?>
 >
 </body>
 

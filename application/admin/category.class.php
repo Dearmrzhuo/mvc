@@ -4,6 +4,7 @@ if (!defined("MVC")) {
 }
 use lib\smarty;
 use lib\database;
+use lib\upload;
 class category{
     public $arr=array();
     function int (){
@@ -35,9 +36,10 @@ class category{
         $isshow = $_POST["isshow"];
         $tpl_name = $_POST["tpl_name"];
         $info = $_POST["info"];
+        $imgurl = $_POST["imgurl"];
         $database = new database();
         $db = $database->db;
-        $db->query("insert into mvc_category (cname,pid,isshow,tpl_name,info) values ('$cname','$gid','$isshow','$tpl_name','$info')");
+        $db->query("insert into mvc_category (cname,pid,isshow,tpl_name,info,imgurl) values ('$cname','$gid','$isshow','$tpl_name','$info','$imgurl')");
         if($db->affected_rows>0){
         //header("loacation:".ENTRY_ADD."admin/category");
             header('location: '.$_SERVER['HTTP_REFERER']);
@@ -98,12 +100,31 @@ class category{
         $isshow = $_GET["isshowEdit"];
         $info = $_GET["infoEdit"];
         $tpl_name = $_GET["tpl_nameEdit"];
+        $imgurl = $_GET["imgurlEdit"];
         $database = new database();
         $db = $database->db;
-        $db->query("update mvc_category set cname='$cname',pid='$pid',isshow='$isshow',tpl_name='$tpl_name',info='$info' where cid = ".$cid);
+        $db->query("update mvc_category set cname='$cname',pid='$pid',isshow='$isshow',tpl_name='$tpl_name',info='$info',imgurl = '$imgurl' where cid = ".$cid);
         if($db->affected_rows>0){
             echo "ok";
         }
     }
+    function upload(){
+        $smarty = new smarty();
+        $smarty->display("admin/upload.html");
 
+    }
+    function uploadimg(){
+        $upload = new upload();
+        $upload->up();
+        $path = MAIN_ADD.$upload->fullpath;
+        echo $path;
+    }
+
+    function uploadfile(){
+        $upload = new upload();
+        $upload->up();
+        $path = $upload->fullpath;
+        //echo MAIN_PATH.DIRECTORY_SEPARATOR.$path;
+        echo "<img src='".MAIN_ADD.$path."'id ='img' >";
+    }
 }

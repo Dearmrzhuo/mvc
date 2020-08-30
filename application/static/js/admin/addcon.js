@@ -10,7 +10,7 @@ $.ajax({
     }
 })
 
-var str = "";
+var str = "   <option value=\"\">请选择分类</option>";
 
 function tree(data, $i, cid, pid) {
     for (var i = 0; i < data.length; i++) {

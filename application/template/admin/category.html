@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="objid">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{CSS_ADD}admin/category.css">
 </head>
 
-<body>
+<body >
 
     <div class="table-con">
         <h1 class="table-title">栏目信息</h1>
@@ -32,7 +32,7 @@
         {/if}
     </div>
     <div class="pannel addpannel">
-        <div class="pannel-con addpannel-con" style="">
+        <div class="pannel-con addpannel-con" style="" style="height:auto;">
             <div class="close addclose"></div>
             <form class="from1" action="{ENTRY_ADD}/admin/category/addCategory" method="POST"
                 style="margin-top: 20px;margin-left: 10px;">
@@ -56,12 +56,14 @@
                     <label for="info">栏目描述</label>
                     <textarea name="info" id="info" class="form-control" rows="4"></textarea>
                 </div>
+                <input type="hidden" value="" class="imgurl" name="imgurl" id ="imgurladd">
+                <div class="addupload" style="line-height: 50px"></div>
                 <input type="submit" class="btn btn-block" value="提交">
             </form>
         </div>
     </div>
     <div class="pannel editpannel">
-        <div class="pannel-con editpannel-con" style="height: 490px;">
+        <div class="pannel-con editpannel-con" style="height:auto;">
             <div class="close editclose"></div>
             <form class="from1" action="{ENTRY_ADD}/admin/category/editCategory" method="POST"
                 style="margin-top: 20px;margin-left: 10px; ">
@@ -90,6 +92,8 @@
                     <textarea name="infoEdit" id="info" class="form-control infoEdit" rows="4"></textarea>
                 </div>
                 <input type="hidden" value="" class="cidEdit" name="cidEdit">
+                <input type="hidden" value="" class="imgurl" name="imgurlEdit" id ="imgurlEdit">
+                <div class="editupload"></div>
                 <input type="button" class="o-edit-btn" value="修改">
             </form>
         </div>
@@ -98,6 +102,26 @@
     <!-- <div class="delFlag">{$delFlag}</div> -->
     <script src="{JS_ADD}jquerymini.js"></script>
     <script src="{JS_ADD}admin/category.js"></script>
+    <script src="{JS_ADD}upload.js"></script>
+    <script>
+        var upObj = new upload();
+        upObj.createView(
+            {
+                parent:document.querySelector(".editupload")
+            }
+        )
+        upObj.up("{ENTRY_ADD}/admin/category/uploadimg",function (e) {
+            $("#imgurlEdit").attr("value",e);
+            console.log(e);
+        });
+        var addobj = new upload();
+        addobj.createView({
+            parent:document.querySelector(".addupload")
+        })
+        addobj.up("{ENTRY_ADD}/admin/category/uploadimg",function (e) {
+            $("#imgurl").attr("value",e);
+        })
+    </script>
 </body>
 
 </html>

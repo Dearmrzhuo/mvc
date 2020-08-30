@@ -5,7 +5,7 @@ if (!defined("MVC")) {
 
 use lib\smarty;
 use lib\database;
-
+use lib\upload;
 class content
 {
     function add()
@@ -17,9 +17,10 @@ class content
         $cid = $_POST["cid"];
         $ctitle = $_POST["ctitle"];
         $conts = $_POST["conts"];
+        $imgurl  = $_POST["imgurl"];
         $database = new database();
         $db = $database->db;
-        $db->query("insert into mvc_contents(cid,ctitle,conts) values('$cid','$ctitle','$conts')");
+        $db->query("insert into mvc_contents(cid,ctitle,conts,imgurl) values('$cid','$ctitle','$conts','$imgurl')");
         if($db->affected_rows>0){
 
             header('location: '.$_SERVER['HTTP_REFERER']);
@@ -28,10 +29,25 @@ class content
             echo "<script>alert('添加失败！');</script>";
         }
     }
-    function showList(){
+    function showList()
+    {
         $database = new database();
+
+
+        $sql ="select * from mvc_contents as con left join mvc_category as cat on con.cid = cat.cid where 1=1";
+        if(isset($_POST["cid"])&&!empty($_POST["cid"])) {
+            $sql.= " and con.cid =" . $_POST["cid"];
+        }
+        if(isset($_POST["ctitle"])&&!empty($_POST["ctitle"])){
+            $wordkey = $_POST["ctitle"];
+            $sql.=" and ctitle like '%".$wordkey."%'";
+        }
+        if(isset($_POST["order"])&&!empty($_POST["order"])) {
+            $order = $_POST["order"];
+            $sql .= " ORDER BY conid " . $order;
+        }
         $db = $database->db;
-        $result = $db->query("select * from mvc_contents as con left join mvc_category as cat on con.cid=cat.cid");
+        $result = $db->query($sql);
         $arr=array();
         while ($row=$result->fetch_assoc()){
             $arr[]=$row;
@@ -43,7 +59,6 @@ class content
     function show(){
         $conid = $_GET["conid"];
         $smarty = new smarty();
-
         $database = new database();
         $db = $database->db;
         $result = $db->query("select * from mvc_contents where conid = ".$conid);
@@ -66,9 +81,10 @@ class content
         $ctitle = $_POST["ctitle"];
         $conts = $_POST["conts"];
         $cid = $_POST["cid"];
+        $imgurl = $_POST["imgurl"];
         $database = new database();
         $db = $database->db;
-        $result = $db->query("update  mvc_contents set ctitle='$ctitle',conts='$conts',cid='$cid' where conid=".$conid);
+        $result = $db->query("update  mvc_contents set ctitle='$ctitle',conts='$conts',cid='$cid',imgurl ='$imgurl' where conid=".$conid);
         if($db->affected_rows>0){
             //header('location:'.$_SERVER["HTTP_REFERER"]);
             echo '<script>alert("修改成功");location.href=$(".ENTRY_ADD").html()+"/admin/content/editcon?conid='.$conid.'"</script>';
@@ -87,4 +103,16 @@ class content
             echo '<script>alert("修改失败");</script>';
         }
     }
+     function uploadfile(){
+        $upload = new upload();
+        $upload->up();
+        $path = MAIN_ADD.$upload->fullpath;
+        echo $path;
+     }
+     function  tinyuplodfile(){
+         $upload = new upload();
+         $upload->up();
+         $path = MAIN_ADD.$upload->fullpath;
+         echo json_encode(array('location' => $path));
+     }
 }
